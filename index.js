@@ -1,5 +1,5 @@
 import express from "express";
-import userRoutes from "./routes/user.js";
+import alertsRoutes from "./routes/alerts.js";
 import cors from "cors";
 
 const app = express();
@@ -7,6 +7,6 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.use("/", userRoutes);
+app.use("/", alertsRoutes);
 
 app.listen(3000);
