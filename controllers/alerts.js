@@ -26,7 +26,7 @@ export const updateAlerts = (req, res) => {
   const q =
     "UPDATE alerts SET `alertlevel` = ?, `alertmsg` = ? WHERE `alertid` = ?";
 
-  const values = [req.body.alertlevel, req.body.alertmsg];
+  const values = [req.body.alertlevel, req.body.alertmsg, req.params.alertid];
 
   connection.query(q, [...values], (err) => {
     if (err) return res.json(err);
@@ -37,7 +37,7 @@ export const updateAlerts = (req, res) => {
 export const deleteAlerts = (req, res) => {
   const q = "DELETE FROM alerts WHERE `alertid` = ?";
 
-  connection.query(q, [req.params.id], (err) => {
+  connection.query(q, [req.params.alertid], (err) => {
     if (err) return res.json(err);
 
     return res.status(200).json("Alerta deletado com sucesso.");
